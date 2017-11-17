@@ -45,35 +45,34 @@ exports.bitcoinInfo = (req, res) => {
   function priceHandler (assistant) {
       const msg = "Right now the price of a bitcoihn is USD. What else  would you like to know?";
       assistant.ask(msg);
-    });
   }
 
   // Fulfill total bitcoin action
   function totalHandler (assistant) {
       const msg = "Right now there are billion bitcoins around the world. What else would you like to know?";
       assistant.ask(msg);
-    });
+   
   }
 
   // Fulfill block count action
   function blockCountHandler (assistant) {
       const msg = "Right now there are blocks. What else would you like to know? the price?";
       assistant.ask(msg);
-    });
+  
   }
 
   // Fulfill market cap action
   function marketCaptHandler (assistant) {
       const msg = "Right now market cap is billions. What else would you like to know?";
       assistant.ask(msg);
-    });
+  
   }
 
   // Fulfill interval action
   function intervalHandler (assistant) {
     const msg = "Right now the interval between blocks is seconds. What else would you like to know?";
       assistant.ask(msg);
-    });
+  
   }
 
   // The Entry point to all our actions
