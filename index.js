@@ -43,49 +43,35 @@ exports.bitcoinInfo = (req, res) => {
 
   // Fulfill price action business logic
   function priceHandler (assistant) {
-    request(EXT_BITCOIN_API_URL + EXT_PRICE, function(error, response, body) {
-      // The fulfillment logic for returning the bitcoin current price
-      console.log("priceHandler response: " + JSON.stringify(response) + " Body: " + body + " | Error: " + error);
-      const msg = "Right now the price of a bitcoin is " + body + " USD. What else would you like to know?";
+      const msg = "Right now the price of a bitcoihn is USD. What else  would you like to know?";
       assistant.ask(msg);
     });
   }
 
-  // Fulfill total bitcoin action 
+  // Fulfill total bitcoin action
   function totalHandler (assistant) {
-    request(EXT_BITCOIN_API_URL + EXT_TOTAL, function(error, response, body) {
-      console.log("totalHandler response: " + JSON.stringify(response) + " Body: " + body + " | Error: " + error);
-      // The fulfillment logic for returning the amount of bitcoins in the world
-      const billionsBitcoins = body / 1000000000;
-      const msg = "Right now there are " + billionsBitcoins + " billion bitcoins around the world. What else would you like to know?";
+      const msg = "Right now there are billion bitcoins around the world. What else would you like to know?";
       assistant.ask(msg);
     });
   }
-  
+
   // Fulfill block count action
   function blockCountHandler (assistant) {
-    request(EXT_BITCOIN_API_URL + EXT_BLOCK_COUNT, function(error, response, body) {
-      console.log("blockCountHandler response: " + JSON.stringify(response) + " Body: " + body + " | Error: " + error);
-      const msg = "Right now there are " + body + " blocks. What else would you like to know? the price?";
+      const msg = "Right now there are blocks. What else would you like to know? the price?";
       assistant.ask(msg);
     });
   }
 
   // Fulfill market cap action
   function marketCaptHandler (assistant) {
-    request(EXT_BITCOIN_API_URL + EXT_MARKET_CAP, function(error, response, body) {
-      console.log("marketCaptHandler response: " + JSON.stringify(response) + " Body: " + body + " | Error: " + error);
-      const marketCapB = Math.round((body / 1000000000) * 100) / 100
-      const msg = "Right now market cap is " + marketCapB + " billions. What else would you like to know?";
+      const msg = "Right now market cap is billions. What else would you like to know?";
       assistant.ask(msg);
     });
   }
-  
+
   // Fulfill interval action
   function intervalHandler (assistant) {
-    request(EXT_BITCOIN_API_URL + EXT_INTERVAL, function(error, response, body) {
-      console.log("interval response: " + JSON.stringify(response) + " Body: " + body + " | Error: " + error);
-      const msg = "Right now the interval between blocks is " + body + " seconds. What else would you like to know?";
+    const msg = "Right now the interval between blocks is seconds. What else would you like to know?";
       assistant.ask(msg);
     });
   }
@@ -97,7 +83,7 @@ exports.bitcoinInfo = (req, res) => {
   actionMap.set(ACTION_BLOCK, blockCountHandler);
   actionMap.set(ACTION_MARKET, marketCaptHandler);
   actionMap.set(ACTION_INTERVAL, intervalHandler);
-  
+
   assistant.handleRequest(actionMap);
 };
 // [END Bitcoin Info]
