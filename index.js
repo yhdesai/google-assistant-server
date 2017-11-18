@@ -22,10 +22,7 @@ const request = require('request');
 
 // the actions we are supporting (get them from api.ai)
 const ACTION_PRICE = 'price';
-const ACTION_TOTAL = 'total';
-const ACTION_BLOCK = 'block';
-const ACTION_MARKET = 'marketcap';
-const ACTION_INTERVAL = 'interval';
+const ACTION_FAN_ON = 'fan_on';
 
 // The end-points to our calls
 const EXT_BITCOIN_API_URL = "https://blockchain.info";
@@ -45,6 +42,12 @@ exports.bitcoinInfo = (req, res) => {
   function priceHandler (assistant) {
       const msg = "Right now the price of a bitcoihn is USD. What else  would you like to know?";
       assistant.ask(msg);
+  }
+  
+  // Fulfill fan_on action
+  function fan_onHandler (assistant) {
+    const msg = "turning fan on";
+    assistant.ask(msg);
   }
 
   // Fulfill total bitcoin action
