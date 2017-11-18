@@ -81,6 +81,7 @@ exports.bitcoinInfo = (req, res) => {
   // The Entry point to all our actions
   const actionMap = new Map();
   actionMap.set(ACTION_PRICE, priceHandler);
+  actionMap.set(ACTION_FAN_ON, fan_onHandler);
   actionMap.set(ACTION_TOTAL, totalHandler);
   actionMap.set(ACTION_BLOCK, blockCountHandler);
   actionMap.set(ACTION_MARKET, marketCaptHandler);
