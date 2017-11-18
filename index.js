@@ -21,28 +21,23 @@ const Assistant = require('actions-on-google').ApiAiAssistant;
 const request = require('request');
 
 // the actions we are supporting (get them from api.ai)
-const ACTION_PRICE = 'price';
+//const ACTION_PRICE = 'price';
 const ACTION_FAN_ON = 'fan_on';
 
 // The end-points to our calls
-const EXT_BITCOIN_API_URL = "https://blockchain.info";
-const EXT_PRICE = "/q/24hrprice";
-const EXT_TOTAL = "/q/totalbc";
-const EXT_BLOCK_COUNT = "/q/getblockcount";
-const EXT_MARKET_CAP = "/q/marketcap";
-const EXT_INTERVAL = "/q/interval";
+//const EXT_BITCOIN_API_URL = "https://blockchain.info";
+//const EXT_PRICE = "/q/24hrprice";
+//const EXT_TOTAL = "/q/totalbc";
+//const EXT_BLOCK_COUNT = "/q/getblockcount";
+//const EXT_MARKET_CAP = "/q/marketcap";
+//const EXT_INTERVAL = "/q/interval";
 
 // [START Bitcoin Info]
 exports.bitcoinInfo = (req, res) => {
   const assistant = new Assistant({request: req, response: res});
   console.log('bitcoinInfoAction Request headers: ' + JSON.stringify(req.headers));
   console.log('bitcoinInfoAction Request body: ' + JSON.stringify(req.body));
-
-  // Fulfill price action business logic
-  function priceHandler (assistant) {
-      const msg = "Right now the price of a bitcoihn is USD. What else  would you like to know?";
-      assistant.ask(msg);
-  }
+  
   
   // Fulfill fan_on action
   function fan_onHandler (assistant) {
@@ -50,43 +45,11 @@ exports.bitcoinInfo = (req, res) => {
     assistant.ask(msg);
   }
 
-  // Fulfill total bitcoin action
-  function totalHandler (assistant) {
-      const msg = "Right now there are billion bitcoins around the world. What else would you like to know?";
-      assistant.ask(msg);
-   
-  }
-
-  // Fulfill block count action
-  function blockCountHandler (assistant) {
-      const msg = "Right now there are blocks. What else would you like to know? the price?";
-      assistant.ask(msg);
   
-  }
-
-  // Fulfill market cap action
-  function marketCaptHandler (assistant) {
-      const msg = "Right now market cap is billions. What else would you like to know?";
-      assistant.ask(msg);
-  
-  }
-
-  // Fulfill interval action
-  function intervalHandler (assistant) {
-    const msg = "Right now the interval between blocks is seconds. What else would you like to know?";
-      assistant.ask(msg);
-  
-  }
 
   // The Entry point to all our actions
   const actionMap = new Map();
-  actionMap.set(ACTION_PRICE, priceHandler);
   actionMap.set(ACTION_FAN_ON, fan_onHandler);
-  actionMap.set(ACTION_TOTAL, totalHandler);
-  actionMap.set(ACTION_BLOCK, blockCountHandler);
-  actionMap.set(ACTION_MARKET, marketCaptHandler);
-  actionMap.set(ACTION_INTERVAL, intervalHandler);
-
   assistant.handleRequest(actionMap);
 };
 // [END Bitcoin Info]
